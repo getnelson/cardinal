@@ -12,16 +12,10 @@ plans:
     desired: 1
   workflow:
     kind: pulsar
-    blueprint: cpu-deployment@HEAD
+    blueprint: example@HEAD
 
 namespaces:
 - name: dev
-  units:
-  - ref: cardinal
-    plans:
-    - default
-
-- name: prod
   units:
   - ref: cardinal
     plans:
