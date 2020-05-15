@@ -1,0 +1,32 @@
+---
+units:
+- name: cardinal
+  ports:
+    - default->4455/https
+  description: >
+    Hello, World HTTP server
+
+plans:
+- name: default
+  instances:
+    desired: 1
+  workflow:
+    kind: pulsar
+    blueprint: cpu-deployment@HEAD
+
+namespaces:
+- name: dev
+  units:
+  - ref: cardinal
+    plans:
+    - default
+
+- name: prod
+  units:
+  - ref: cardinal
+    plans:
+    - default
+
+datacenters:
+  only:
+  - us-east-1
